@@ -8,8 +8,8 @@ import CharDetails from "../charDetails";
 const App = () => {
   const [isRandomCharacter, setRandomCharacter] = useState(true);
   const showRandomCharacter = () => setRandomCharacter(!isRandomCharacter);
-	const randomChar = isRandomCharacter ? <RandomChar/> : null;
-	
+  const randomChar = isRandomCharacter ? <RandomChar /> : null;
+
   return (
     <>
       <Container>
@@ -19,7 +19,13 @@ const App = () => {
         <Row>
           <Col lg={{ size: 5, offset: 0 }}>
             {randomChar}
-						<Button color="secondary" onClick={showRandomCharacter}>secondary</Button>
+            <Button
+              color="secondary"
+              onClick={showRandomCharacter}
+              style={{ margin: "1em auto"}}
+            >
+              Show Random Character
+            </Button>
           </Col>
         </Row>
         <Row>
