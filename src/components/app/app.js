@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import { Col, Row, Container, Button } from "reactstrap";
 import Header from "../header";
 import RandomChar from "../randomChar";
@@ -7,8 +7,16 @@ import CharDetails from "../charDetails";
 
 const App = () => {
   const [isRandomCharacter, setRandomCharacter] = useState(true);
+  const [selectedChar, setSelectedChar] = useState(130);
+
+
   const showRandomCharacter = () => setRandomCharacter(!isRandomCharacter);
   const randomChar = isRandomCharacter ? <RandomChar /> : null;
+
+  const onCharSelected = (id) => {
+    setSelectedChar(id);
+  };
+
 
   return (
     <>
@@ -22,7 +30,7 @@ const App = () => {
             <Button
               color="secondary"
               onClick={showRandomCharacter}
-              style={{ margin: "1em auto"}}
+              style={{ margin: "1em auto" }}
             >
               Show Random Character
             </Button>
@@ -30,10 +38,10 @@ const App = () => {
         </Row>
         <Row>
           <Col md="6">
-            <ItemList />
+            <ItemList onCharSelected={onCharSelected} />
           </Col>
           <Col md="6">
-            <CharDetails />
+            <CharDetails charId={selectedChar}/>
           </Col>
         </Row>
       </Container>

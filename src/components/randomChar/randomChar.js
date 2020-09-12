@@ -4,16 +4,15 @@ import gotService from "../../services/gotService";
 import Spinner from "../spinner";
 import ErrorMessage from "../errorMessage";
 export default class RandomChar extends Component {
-  constructor() {
-    super();
-    this.updateCharacter();
-  }
-
   gotService = new gotService();
   state = {
     character: {},
     loading: true,
   };
+
+  componentDidMount() {
+    this.updateCharacter();
+  }
 
   onCharacterLoaded = (character) => {
     this.setState({
